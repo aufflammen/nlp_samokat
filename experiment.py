@@ -31,10 +31,11 @@ def get_predict(model, dataloader, progress=True):
 
         for batch in pbar:
             batch = {k: v.to(device) for k, v in batch.items()}
-            labels = batch.pop('labels')
+            
+            if 'labels' in batch:
+                labels = batch.pop('labels')
             
             outputs = model(**batch)
-
             outputs = torch.sigmoid(outputs).cpu().numpy()
             results.append(outputs)
 
@@ -104,7 +105,7 @@ def color_value(value, params, attrs: list | None = None) -> str:
     return colored(fmt.format(value), color, attrs=attrs)
 
 
-def get_metrics(pred_proba: np.ndarray, target: np.ndarray, threshold: float = 0.5, detail_stat=True) -> str:
+def get_metrics(pred_proba: np.ndarray, target: np.ndarray, threshold: float = .5, detail_stat=True) -> str:
     """Расчет нескольких метрик и вывод их в функции print."""
     pred = (pred_proba >= threshold).astype(int)
 
@@ -179,8 +180,11 @@ def show_predict(
         percent = f"({value:.1%})"
         return colored(f"{percent:>7}", color)
 
-    def color_label_green_red(label: int, true_labels: np.array) -> str:
-        color = 'green' if label in true_labels else 'red'
+    def color_label_green_red(idx: int, label: int, true_labels: np.ndarray) -> str:
+        if pred[idx, label] >= .5:
+            color = 'green' if label in true_labels else 'red'
+        else:
+            color = 'light_grey'
         return colored(id2label[label], color)
 
     bce = binary_cross_entropy(pred, target)
@@ -202,7 +206,7 @@ def show_predict(
         pred_labels = np.argsort(pred[idx])[::-1][:5]
         print(f"\n{Ansi.bold}Pred labels (top 5):{Ansi.end}")
         for label in pred_labels:
-            label_color = color_label_green_red(label, true_labels)
+            label_color = color_label_green_red(idx, label, true_labels)
             print(f"{label:>4}: {color_proba_black_gray(idx, label)} {label_color}")
 
         if nums > 1:
