@@ -17,7 +17,7 @@
 **Структура проекта**
 | Файл | Описание |
 | --- | --- |
-| **nlp_samokat.ipynb** | Текущий и основной файл проекта. |
+| **[nlp_samokat.ipynb](nlp_samokat.ipynb)** | Основной файл проекта. |
 | **[mlm_dataset.ipynb](mlm_dataset.ipynb)** | Процесс подготовки датасета для Masked Language Modeling. |
 | **[eda.py](eda.py)** | Функции для разведочного анализа данных. |
 | **[processing.py](processing.py)** | Функции для обработки данных. |
@@ -25,6 +25,7 @@
 | **[custom_trainer.py](custom_trainer.py)** | Цикл обучения для DL моделей. |
 | **[custom_metric.py](custom_metric.py)** | Пользовательские метрики. |
 | **[utils.py](utils.py)** | Остальные функции. |
+| **[submission.csv](submission.csv)** | Файл с предсказаниями для тестовой выборки |
 
 <br>
 
