@@ -4,7 +4,7 @@ from torchmetrics import Metric
 
 
 class AccuracySamples(Metric):
-    def __init__(self, threshold: float = 0.5, **kwargs):
+    def __init__(self, threshold: float = .5, **kwargs):
         super().__init__(**kwargs)
         self.threshold = threshold
         self.add_state('correct', default=torch.tensor(0), dist_reduce_fx='sum')

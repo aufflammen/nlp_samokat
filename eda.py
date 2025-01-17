@@ -191,13 +191,6 @@ def get_cnt_labels(
 
 
 def get_cnt_classes_per_object(labels_multihot: np.ndarray) -> tuple[dict, int]:
-    """
-
-    Args:
-
-    Returns:
-    
-    """
     id_cls, num_obj = np.unique(np.sum(labels_multihot, axis=1), return_counts=True)
     num_classes_per_object = {str(k): v for k, v in zip(id_cls, num_obj)}
 
@@ -205,7 +198,7 @@ def get_cnt_classes_per_object(labels_multihot: np.ndarray) -> tuple[dict, int]:
     return num_classes_per_object, num_samples
 
 
-def get_cnt_assessment(data: pd.Series):
+def get_cnt_assessment(data: pd.Series) -> tuple[dict, int]:
     cnt = data.value_counts(dropna=False).to_dict()
     cnt = dict(sorted(cnt.items(), reverse=True))
     cnt = {str(k if pd.isna(k) else int(k)): v for k, v in cnt.items()}

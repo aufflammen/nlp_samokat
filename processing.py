@@ -85,15 +85,13 @@ def prepare_data(
     return data
 
 
-def x_y_split(data: dict) -> tuple[np.ndarray, np.ndarray]:
+def x_y_split(data: dict, emb: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """
     Представление датасета в виде двух numpy массивов, 
     для работы с классическими ML алгоритмами.
     """
-    assessment = data['urating'].reshape(-1, 1)
-    emb = data['emb']
-
-    X = np.concatenate([assessment, emb], axis=1)
+    urating = data['urating'].reshape(-1, 1)
+    X = np.concatenate([urating, emb], axis=1)
     y = data['labels']
     return X, y
 
