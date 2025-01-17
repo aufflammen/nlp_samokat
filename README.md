@@ -14,17 +14,17 @@
 *Пример:* `accuracy_score(np.array([[0, 1], [1, 1]]), np.ones((2, 2)))  >>>  0.5`
 <br><br>
 
-**Структура проекта**
+**Структура проекта:**
 | Файл | Описание |
 | --- | --- |
-| **[nlp_samokat.ipynb](nlp_samokat.ipynb)** | Основной файл проекта. |
-| **[mlm_dataset.ipynb](mlm_dataset.ipynb)** | Процесс подготовки датасета для Masked Language Modeling. |
-| **[eda.py](eda.py)** | Функции для разведочного анализа данных. |
-| **[processing.py](processing.py)** | Функции для обработки данных. |
-| **[experiment.py](experiment.py)** | Функции, связанные с проведением экспериментов и оценкой результатов. |
-| **[custom_trainer.py](custom_trainer.py)** | Цикл обучения для DL моделей. |
-| **[custom_metric.py](custom_metric.py)** | Пользовательские метрики. |
-| **[utils.py](utils.py)** | Остальные функции. |
+| **[nlp_samokat.ipynb](nlp_samokat.ipynb)** | Основной файл проекта |
+| **[mlm_dataset.ipynb](mlm_dataset.ipynb)** | Процесс подготовки датасета для MLM (Masked Language Modeling) |
+| **[eda.py](eda.py)** | Функции для разведочного анализа данных |
+| **[processing.py](processing.py)** | Функции для обработки данных |
+| **[experiment.py](experiment.py)** | Функции, связанные с проведением экспериментов и оценкой результатов |
+| **[custom_trainer.py](custom_trainer.py)** | Цикл обучения |
+| **[custom_metric.py](custom_metric.py)** | Пользовательские метрики |
+| **[utils.py](utils.py)** | Прочие функции |
 | **[submission.csv](submission.csv)** | Файл с предсказаниями для тестовой выборки |
 
 <br>
