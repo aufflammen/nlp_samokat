@@ -9,13 +9,6 @@ nest_asyncio.apply() # Для совместимости с Jupyter Notebook
 
 
 def get_multihot_tags(data: pd.Series, tag2id: dict) -> np.ndarray:
-    """
-
-    Args:
-
-    Returns:
-    
-    """
     tags = np.zeros([data.shape[0], len(tag2id)], dtype=np.int32)
 
     for i, obj_tags in enumerate(data):
@@ -40,7 +33,7 @@ def drop_text_duplicates(data, col_labels):
         2. Если только один объект будет иметь хотя бы один ненулевой класс, 
              то результирующим массив будет копией классов данного объекта.
         3. Если ненулевые классы будут иметь два объекта, то результирующий массив 
-             будет состоять из классов, которые присутствуют в обоих ненулевых объектах.
+             будет состоять из классов, которые присутствуют одновременно в обоих ненулевых объектах.
         4. Если ненулевые классы будут у 3 и более объектов, то результирующий массив 
             будет состоять из классов, которые присутствуют хотя бы в половине ненулевых объектов.
     """
@@ -67,12 +60,6 @@ def prepare_data(
     df: pd.DataFrame, 
     col_labels: list | None = None,
 ) -> dict:
-    """
-    Args:
-
-    Returns:
-    
-    """
     data = {}
 
     data['sentences'] = df['text'].to_numpy()
